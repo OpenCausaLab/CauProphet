@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use CauProphet in your research, please cite the accompanying paper."
+title: "CauProphet"
+type: software
+version: "0.1.0"
+license: MIT
+authors:
+  - family-names: Wu
+    given-names: Kaiwen
+  - family-names: Lu
+    given-names: Chaochao
+preferred-citation:
+  type: article
+  title: "CauProphet: Teaching Agents to Develop Causal Cognition like Humans"
+  authors:
+    - family-names: Wu
+      given-names: Kaiwen
+    - family-names: Lu
+      given-names: Chaochao
+  journal: "arXiv preprint arXiv:2610.32477"
+  year: 2026
+  url: "https://arxiv.org/abs/2610.32477"

@@ -1,0 +1,557 @@
+.cognition-index-panel {
+	display: flex;
+	min-height: 0;
+	flex: 1;
+	flex-direction: column;
+	background:
+		radial-gradient(circle at 82% 4%, rgba(79, 110, 247, 0.1), transparent 28%),
+		var(--bg-base);
+}
+
+.cognition-index-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 13px 16px;
+	border-bottom: 1px solid var(--border);
+	background: rgba(19, 22, 30, 0.86);
+}
+
+.cognition-index-heading {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	color: var(--accent);
+}
+
+.cognition-index-title {
+	color: var(--text-primary);
+	font-size: 13px;
+	font-weight: 650;
+}
+
+.cognition-index-subtitle {
+	margin-top: 1px;
+	color: var(--text-muted);
+	font-size: 11px;
+}
+
+.cognition-stats {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 1px;
+	border-bottom: 1px solid var(--border);
+	background: var(--border);
+}
+
+.cognition-stat {
+	display: flex;
+	min-width: 0;
+	align-items: baseline;
+	gap: 6px;
+	padding: 9px 12px;
+	background: var(--bg-surface);
+}
+
+.cognition-stat strong {
+	color: var(--text-primary);
+	font: 700 16px var(--font-mono);
+}
+
+.cognition-stat span {
+	overflow: hidden;
+	color: var(--text-muted);
+	font-size: 10px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.cognition-search-wrap {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin: 10px 14px 8px;
+	padding: 7px 10px;
+	border: 1px solid var(--border);
+	border-radius: var(--radius-md);
+	background: var(--bg-surface);
+	color: var(--text-muted);
+}
+
+.cognition-search-wrap:focus-within {
+	border-color: var(--accent);
+	box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.cognition-search-wrap input {
+	min-width: 0;
+	flex: 1;
+	border: 0;
+	outline: 0;
+	background: transparent;
+	color: var(--text-primary);
+	font: 12px var(--font-sans);
+}
+
+.cognition-search-wrap > span {
+	font: 10px var(--font-mono);
+}
+
+.cognition-index-body {
+	display: grid;
+	min-height: 0;
+	flex: 1;
+	grid-template-columns: minmax(0, 1fr) minmax(238px, 29%);
+	gap: 8px;
+	padding: 0 14px 10px;
+}
+
+.cognition-graph-shell {
+	position: relative;
+	min-width: 0;
+	min-height: 0;
+	overflow: hidden;
+	border: 1px solid var(--border);
+	border-radius: var(--radius-md);
+	background:
+		linear-gradient(rgba(10, 12, 18, 0.35), rgba(10, 12, 18, 0.35)),
+		var(--bg-base);
+}
+
+.cognition-graph-hint {
+	position: absolute;
+	z-index: 4;
+	top: 9px;
+	left: 10px;
+	padding: 4px 7px;
+	border: 1px solid rgba(64, 72, 98, 0.7);
+	border-radius: 5px;
+	background: rgba(16, 19, 27, 0.8);
+	color: var(--text-muted);
+	font-size: 9.5px;
+	pointer-events: none;
+	backdrop-filter: blur(5px);
+}
+
+.cognition-graph-node {
+	display: flex;
+	width: 172px;
+	height: 58px;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 5px;
+	padding: 7px 11px;
+	border: 1px solid #5f6b86;
+	border-radius: 8px;
+	background: linear-gradient(145deg, #202634, #171b25);
+	box-shadow: 0 5px 14px rgba(0, 0, 0, 0.22);
+	color: var(--text-primary);
+	transition:
+		border-color 0.16s,
+		box-shadow 0.16s,
+		transform 0.16s;
+}
+
+.cognition-graph-node:hover,
+.cognition-graph-node.selected {
+	border-color: var(--accent);
+	box-shadow:
+		0 0 0 2px var(--accent-glow),
+		0 7px 18px rgba(0, 0, 0, 0.3);
+}
+
+.cognition-graph-node.matched {
+	border-color: var(--cyan);
+	box-shadow: 0 0 0 3px rgba(79, 214, 247, 0.12);
+}
+
+.cognition-graph-node-label {
+	max-width: 150px;
+	overflow: hidden;
+	font-size: 11.5px;
+	font-weight: 650;
+	text-align: center;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.cognition-graph-node-degree {
+	display: flex;
+	gap: 8px;
+	color: var(--text-muted);
+	font: 9px var(--font-mono);
+}
+
+.cognition-graph-shell .react-flow__handle {
+	opacity: 0;
+}
+
+.cognition-graph-shell .react-flow__controls {
+	border: 1px solid var(--border);
+	box-shadow: none;
+}
+
+.cognition-graph-shell .react-flow__controls-button {
+	border-color: var(--border);
+	background: var(--bg-elevated);
+	fill: var(--text-secondary);
+}
+
+.cognition-graph-shell .react-flow__edge.selected .react-flow__edge-path {
+	filter: drop-shadow(0 0 4px rgba(79, 134, 247, 0.75));
+}
+
+.cognition-edge-label {
+	position: absolute;
+	padding: 2px 5px;
+	border: 1px solid rgba(79, 91, 122, 0.7);
+	border-radius: 4px;
+	background: rgba(15, 18, 26, 0.9);
+	color: var(--text-secondary);
+	font: 8.5px var(--font-mono);
+	white-space: nowrap;
+	pointer-events: none;
+}
+
+.cognition-edge-label.selected {
+	border-color: var(--accent);
+	color: var(--text-primary);
+}
+
+.cognition-inspector {
+	min-width: 0;
+	min-height: 0;
+	overflow-y: auto;
+	border: 1px solid var(--border);
+	border-radius: var(--radius-md);
+	background: rgba(19, 22, 30, 0.9);
+}
+
+.cognition-inspector-title {
+	position: sticky;
+	z-index: 2;
+	top: 0;
+	padding: 9px 11px;
+	border-bottom: 1px solid var(--border);
+	background: rgba(24, 28, 38, 0.96);
+	color: var(--text-muted);
+	font-size: 9px;
+	font-weight: 750;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.cognition-inspector-content {
+	display: flex;
+	flex-direction: column;
+	gap: 11px;
+	padding: 11px;
+}
+
+.cognition-relation-heading {
+	display: grid;
+	align-items: center;
+	grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+	gap: 7px;
+	color: var(--text-primary);
+	font-size: 11px;
+	text-align: center;
+}
+
+.cognition-relation-heading strong {
+	overflow-wrap: anywhere;
+}
+
+.cognition-relation-heading span {
+	color: var(--accent);
+	font-size: 17px;
+}
+
+.cognition-relation-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+}
+
+.cognition-relation-meta span {
+	padding: 3px 7px;
+	border-radius: 999px;
+	font-size: 9px;
+	font-weight: 650;
+}
+
+.cognition-relation-meta .causal {
+	background: rgba(79, 134, 247, 0.14);
+	color: #7ba4ff;
+}
+
+.cognition-relation-meta .active {
+	background: var(--green-dim);
+	color: var(--green);
+}
+
+.cognition-relation-meta .inactive {
+	background: var(--bg-elevated);
+	color: var(--text-muted);
+}
+
+.cognition-posterior {
+	padding: 9px;
+	border: 1px solid rgba(79, 110, 247, 0.24);
+	border-radius: 7px;
+	background: rgba(79, 110, 247, 0.06);
+}
+
+.cognition-posterior > div:first-child {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+}
+
+.cognition-posterior span {
+	color: var(--text-muted);
+	font-size: 9px;
+}
+
+.cognition-posterior strong {
+	color: var(--text-primary);
+	font: 700 17px var(--font-mono);
+}
+
+.cognition-posterior-track {
+	position: relative;
+	height: 5px;
+	margin-top: 7px;
+	overflow: hidden;
+	border-radius: 999px;
+	background: var(--bg-base);
+}
+
+.cognition-posterior-track span {
+	display: block;
+	height: 100%;
+	background: linear-gradient(
+		90deg,
+		var(--yellow),
+		var(--accent),
+		var(--green)
+	);
+}
+
+.cognition-posterior-track i {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 50%;
+	width: 1px;
+	background: rgba(255, 255, 255, 0.75);
+}
+
+.cognition-assessment-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 5px;
+}
+
+.cognition-assessment-metric {
+	display: flex;
+	min-width: 0;
+	flex-direction: column;
+	gap: 3px;
+	padding: 7px;
+	border-radius: 6px;
+	background: var(--bg-elevated);
+}
+
+.cognition-assessment-metric span {
+	overflow: hidden;
+	color: var(--text-muted);
+	font-size: 8px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.cognition-assessment-metric strong {
+	color: var(--text-primary);
+	font: 650 11px var(--font-mono);
+}
+
+.cognition-inspector-field {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.cognition-inspector-field label,
+.cognition-claims-title {
+	color: var(--text-muted);
+	font-size: 8.5px;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+.cognition-inspector-field p {
+	margin: 0;
+	color: var(--text-secondary);
+	font-size: 10.5px;
+	line-height: 1.55;
+}
+
+.cognition-inspector-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+}
+
+.cognition-inspector-tags span {
+	padding: 2px 6px;
+	border-radius: 999px;
+	background: var(--bg-elevated);
+	color: var(--text-secondary);
+	font-size: 9px;
+}
+
+.cognition-concept-heading {
+	color: var(--text-primary);
+	font-size: 15px;
+	font-weight: 700;
+	overflow-wrap: anywhere;
+}
+
+.cognition-claims-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-top: 2px;
+}
+
+.cognition-claims-title span {
+	padding: 2px 5px;
+	border-radius: 999px;
+	background: var(--bg-elevated);
+	font: 9px var(--font-mono);
+}
+
+.cognition-claim-list {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.cognition-claim {
+	padding: 7px 8px;
+	border-left: 2px solid var(--yellow);
+	border-radius: 0 6px 6px 0;
+	background: var(--bg-elevated);
+}
+
+.cognition-claim.supported {
+	border-left-color: var(--green);
+}
+
+.cognition-claim.contradicted {
+	border-left-color: var(--red);
+}
+
+.cognition-claim-topline {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 9px;
+}
+
+.cognition-claim-topline span {
+	color: var(--text-primary);
+	font-weight: 650;
+}
+
+.cognition-claim-topline strong {
+	color: var(--text-muted);
+	font: 600 8.5px var(--font-mono);
+}
+
+.cognition-claim p {
+	margin: 6px 0;
+	color: var(--text-secondary);
+	font-size: 9.5px;
+	line-height: 1.45;
+}
+
+.cognition-claim code,
+.cognition-element-id {
+	color: var(--text-muted);
+	font-size: 8px;
+	overflow-wrap: anywhere;
+}
+
+.cognition-element-id {
+	padding-top: 3px;
+	border-top: 1px solid var(--border);
+}
+
+.cognition-empty,
+.cognition-inspector-empty {
+	display: flex;
+	height: 100%;
+	min-height: 160px;
+	align-items: center;
+	justify-content: center;
+	gap: 9px;
+	color: var(--text-muted);
+	font-size: 11px;
+	text-align: center;
+}
+
+.cognition-empty {
+	grid-column: 1 / -1;
+}
+
+.cognition-inspector-empty {
+	min-height: 120px;
+	padding: 16px;
+}
+
+.cognition-error {
+	color: var(--red);
+}
+
+.cognition-index-footer {
+	display: flex;
+	align-items: center;
+	gap: 9px;
+	padding: 6px 14px;
+	border-top: 1px solid var(--border);
+	background: var(--bg-panel);
+	color: var(--text-muted);
+	font-size: 9.5px;
+	white-space: nowrap;
+	overflow-x: auto;
+}
+
+.cognition-index-footer code {
+	color: var(--text-code);
+}
+
+.cognition-spin {
+	animation: spin 0.7s linear infinite;
+}
+
+@media (max-width: 900px) {
+	.cognition-stats {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.cognition-index-body {
+		grid-template-columns: minmax(0, 1fr) minmax(210px, 34%);
+	}
+}
+
+@media (max-width: 660px) {
+	.cognition-index-body {
+		grid-template-columns: 1fr;
+		grid-template-rows: minmax(300px, 1fr) minmax(180px, 0.65fr);
+	}
+}
