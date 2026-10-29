@@ -10,7 +10,7 @@
 
 **An agent that builds, revises, and reuses causal understanding.**
 
-[Overview](#overview) · [How It Works](#how-it-works) · [Quick Start](#quick-start) · [Interactive Example](#interactive-example) · [Citation](#citation)
+[Overview](#overview) · [How It Works](#how-it-works) · [Quick Start](#quick-start) · [Case Studies](#case-studies) · [Citation](#citation)
 
 ## Overview
 
@@ -80,34 +80,38 @@ DuckDuckGo is the default web search provider and requires no search API key. Br
 
 Keep your local configuration and runtime workspace outside the source repository. For an independent configuration, set `CAUPROPHET_CONFIG_DIR` to a separate directory before launching.
 
-## Interactive Example
+## Case Studies
 
-Start with an ordinary conversation:
+Two single-request cases from the paper, run with `claude-opus-5-5`. The figures present edited prompts and answers alongside the recorded analysis, Causal Belief, and Causal Cognition.
 
-> Hello, who are you?
+### Labubu prices are falling. Buy now or wait?
 
-> What can you do for me?
+> I want a regular Labubu figure, with RMB 200 to spend and two to three weeks to buy it. Prices have fallen, but I worry it will sell out again. Should I buy now or wait?
 
-Then ask a substantive question:
-
-> A place starts testing more and then reports more cases. Should I take that as a sign the outbreak is getting worse? Keep it short.
-
-Follow up with a condition that changes the interpretation:
-
-> What if they mainly started testing people who already felt ill - wouldn't that push the positivity rate up too?
-
-The example below shows excerpts from the paper's interaction: the initial answer is revised after the user points out a missing selection mechanism. The agent updates its task-local graph and retains the relationship with its applicable condition in Causal Cognition. The screenshots illustrate the interaction; responses vary with the model and conversation.
+CauProphet retrieves a supply-and-demand explanation and checks recent reporting. Its Causal Belief separates demand for the target figure from group revenue and considers how buyers seeking hidden figures can increase the resale supply of regular figures. **The recommendation: check the exact figure's price and use a price threshold and deadline to decide.** The proposed resale mechanism is saved as a written experience in Causal Cognition.
 
 <details>
-<summary><strong>View the conversation and the resulting causal state</strong></summary>
+<summary><strong>View the Labubu analysis and purchase recommendation</strong></summary>
 
-![Conversation excerpts: an initial explanation followed by a correction about symptom-targeted testing.](assets/case-dialogue.png)
+![Labubu case: evidence and retrieved causal knowledge inform a purchase-specific belief; two reasons support the buying recommendation, and a written experience is retained.](assets/case-labubu.png)
 
-*The follow-up changes who is being tested, prompting a revision of the explanation.*
+</details>
 
-![The revised task-local Causal Belief and a conditional relationship retained in Causal Cognition.](assets/case-state.png)
+### Does AI improve maths learning and exam scores?
 
-*The retained relationship includes its condition and source episode. The displayed confidence is an agent belief, not an experimentally established effect estimate.*
+> I've attached the real classroom data released with this paper. Students seem to do better with AI, but does that mean they can also solve maths problems and score better on exams without it?
+
+CauProphet analyzes the [classroom data](https://github.com/obastani/GenAICanHarmLearning) released with [Bastani et al., PNAS (2025)](https://doi.org/10.1073/pnas.2422633122). Relative to students without AI, adjusted scores on a 100-point scale show two different patterns:
+
+- **AI can give full answers:** practice scores rise by 13.7 points, while exam scores without AI fall by 5.4 points.
+- **AI gives hints with teacher-prepared materials:** practice scores rise by 36.1 points, with no clear exam improvement.
+
+**Higher AI-assisted practice scores do not demonstrate better independent learning.** CauProphet records the causal factors in a task-local belief and saves this distinction as a written experience in Causal Cognition.
+
+<details>
+<summary><strong>View the classroom-data analysis and conclusion</strong></summary>
+
+![Mathematics case: real classroom data, adjusted practice and exam differences, a task-local causal belief, and a saved experience lead from detailed results to the conclusion.](assets/case-math-learning.png)
 
 </details>
 
